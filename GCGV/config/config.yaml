@@ -1,0 +1,45 @@
+model:
+  model_name: "GCGV"
+
+data_input:
+  #dataset_name: IndianPines
+  dataset_name: paviaU
+  #dataset_name: Salinas
+  #dataset_name: pavia
+  #dataset_name: KSC
+  classes: 16
+
+data_split:
+  samples_type: number
+  # number
+  # ratio
+  train_num : 60 #样本数以60为分界点
+  train_num1 : 15
+  train_num2 : 30
+
+  val_num: 0
+  train_ratio: 0.03
+  val_ratio: 0.00
+  superpixel_scale: 150
+  #superpixel_scale: 100
+  #显存不够的可以通过修改超像素分割的范围来缩小计算量
+
+network_config:
+  max_epoch: 200
+  learning_rate: 0.001
+  weight_decay: 0.001
+  lb_smooth: 0.01
+
+#不同数据集，不同的权重融合系数
+weight parameter:
+#**********************************IP、KSC数据集***************************************
+#  alfa: 0.98 #CNN
+#  beta: 0.02 #GAT
+#  branch1: 0.04
+#  branch2: 0.96
+
+##**********************************UP数据集********************************************
+  alfa: 0.04 #CNN
+  beta: 0.96 #GAT
+  branch1: 0.04
+  branch2: 0.96
